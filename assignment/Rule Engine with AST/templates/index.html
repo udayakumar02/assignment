@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules List</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .rule { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; }
+        .node { margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Stored Rules</h1>
+    {% for rule in rules %}
+        <div class="rule">
+            <strong>Rule ID:</strong> {{ rule.id }}<br>
+            <strong>Rule String:</strong> {{ rule.rule_string }}<br>
+            <strong>Created At:</strong> {{ rule.created_at }}<br>
+            <strong>Nodes:</strong>
+            <div class="nodes">
+                {% for node in rule.nodes %}
+                    <div class="node">
+                        Node ID: {{ node.id }}, Type: {{ node.type }}, Value: {{ node.value }},
+                        Left Node: {{ node.left_node }}, Right Node: {{ node.right_node }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
